@@ -39,6 +39,9 @@ export async function updateSession(request: NextRequest) {
     "/tools",
     "/profile",
     "/report",
+    "/contractions",
+    "/birth-plan",
+    "/reminders",
   ];
 
   const isPrivateRoute = privatePrefixes.some(

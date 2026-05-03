@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import {
+  Baby,
+  Bell,
   CalendarDays,
   FileHeart,
   HeartPulse,
@@ -12,6 +14,7 @@ import {
   LogOut,
   Sparkles,
   Stethoscope,
+  Timer,
   UserRound,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -22,10 +25,13 @@ import { createClient } from "@/lib/supabase/client";
 const menu = [
   { href: "/dashboard", label: "Dashboard", icon: House },
   { href: "/health", label: "Saúde", icon: HeartPulse },
-  { href: "/wellness", label: "Diario", icon: NotebookPen },
+  { href: "/wellness", label: "Diário", icon: NotebookPen },
   { href: "/appointments", label: "Consultas", icon: CalendarDays },
   { href: "/documents", label: "Documentos", icon: FileHeart },
   { href: "/guide", label: "Guia semanal", icon: Stethoscope },
+  { href: "/contractions", label: "Contrações", icon: Timer },
+  { href: "/birth-plan", label: "Plano de parto", icon: Baby },
+  { href: "/reminders", label: "Lembretes", icon: Bell },
   { href: "/tools", label: "Ferramentas", icon: Sparkles },
   { href: "/profile", label: "Perfil", icon: UserRound },
 ];
