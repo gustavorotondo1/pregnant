@@ -1,7 +1,39 @@
+"use client";
+
+import { useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/client";
 
 export default function ProfilePage() {
+  const supabase = useMemo(() => createClient(), []);
+  const router = useRouter();
+  const [confirming, setConfirming] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+
+  const handleDeleteAccount = async () => {
+    if (!supabase) return;
+    setDeleting(true);
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) { router.push("/"); return; }
+
+    // Deleta o perfil (cascade vai apagar todos os dados via FK)
+    const { error } = await supabase.from("users").delete().eq("id", user.id);
+    if (error) {
+      toast.error("Nao foi possivel excluir o perfil. Tente novamente.");
+      setDeleting(false);
+      return;
+    }
+
+    await supabase.auth.signOut();
+    toast.success("Conta excluida com sucesso.");
+    router.push("/");
+  };
+
   return (
     <div className="space-y-6">
       <header>
@@ -12,21 +44,48 @@ export default function ProfilePage() {
       </header>
 
       <Card>
+        <h2 className="mb-2 text-base font-semibold">Dados do cadastro</h2>
         <p className="text-sm text-[var(--text-2)]">
-          No primeiro acesso, conclua seu cadastro de gestacao com nome, peso inicial, semana atual, DPP e DUM.
+          Para atualizar nome, semana, DPP ou DUM, acesse o onboarding novamente.
         </p>
-        <Link href="/onboarding" className="mt-3 inline-block text-sm font-semibold text-[var(--brand-700)] underline">
-          Ir para onboarding
+        <Link href="/onboarding" className="mt-3 inline-block text-sm font-semibold text-[var(--brand-700)] underline-offset-4 hover:underline">
+          Editar cadastro
         </Link>
       </Card>
 
       <Card>
-        <h2 className="mb-2 text-base font-semibold">Privacidade</h2>
-        <ul className="list-disc space-y-1 pl-5 text-sm text-[var(--text-2)]">
-          <li>Modo privacidade para ocultar dados sensiveis</li>
-          <li>Exportacao e exclusao de dados (LGPD/GDPR)</li>
-          <li>Consentimento informado para tratamento de dados</li>
-        </ul>
+        <h2 className="mb-2 text-base font-semibold text-red-700">Excluir conta</h2>
+        <p className="mb-4 text-sm text-[var(--text-2)]">
+          Isso apagara permanentemente todos os seus dados: saude, consultas, diario e documentos. Essa acao nao pode ser desfeita.
+        </p>
+        {!confirming ? (
+          <Button
+            onClick={() => setConfirming(true)}
+            className="border border-red-300 bg-red-50 text-red-700 hover:bg-red-100"
+          >
+            Excluir minha conta
+          </Button>
+        ) : (
+          <div className="space-y-3">
+            <p className="text-sm font-semibold text-red-700">Tem certeza? Todos os dados serao perdidos.</p>
+            <div className="flex gap-3">
+              <Button
+                onClick={handleDeleteAccount}
+                disabled={deleting}
+                className="bg-red-600 text-white hover:bg-red-700"
+              >
+                {deleting ? "Excluindo..." : "Sim, excluir tudo"}
+              </Button>
+              <Button
+                onClick={() => setConfirming(false)}
+                disabled={deleting}
+                className="border border-[var(--border-1)] bg-transparent text-[var(--text-1)] hover:bg-[var(--surface-2)]"
+              >
+                Cancelar
+              </Button>
+            </div>
+          </div>
+        )}
       </Card>
     </div>
   );

@@ -13,10 +13,12 @@ import { createClient } from "@/lib/supabase/client";
 
 const schema = z.object({
   fullName: z.string().min(3, "Digite nome completo."),
+  babyName: z.string().optional(),
+  babySex: z.enum(["masculino", "feminino", "nao_revelado"]).optional(),
   initialWeight: z.number().min(30).max(250),
   currentWeek: z.number().min(1).max(42),
-  dueDate: z.string().min(1, "Informe a DPP."),
-  lmpDate: z.string().min(1, "Informe a DUM."),
+  dueDate: z.string().min(1, "Informe a data provavel do parto."),
+  lmpDate: z.string().min(1, "Informe a data da ultima menstruacao."),
 });
 
 type OnboardingData = z.infer<typeof schema>;
@@ -72,6 +74,8 @@ export default function OnboardingPage() {
       {
         id: user.id,
         full_name: values.fullName,
+        baby_name: values.babyName || null,
+        baby_sex: values.babySex || null,
         initial_weight_kg: values.initialWeight,
         current_gestation_week: values.currentWeek,
         due_date: values.dueDate,
@@ -105,24 +109,40 @@ export default function OnboardingPage() {
             {errors.fullName && <span className="text-xs text-red-600">{errors.fullName.message}</span>}
           </label>
           <label className="grid gap-1 text-sm">
+            Nome do bebe (opcional)
+            <Input {...register("babyName")} placeholder="Como voce quer chamar?" />
+          </label>
+          <label className="grid gap-1 text-sm">
+            Sexo do bebe (opcional)
+            <select
+              {...register("babySex")}
+              className="rounded-xl border border-[var(--border-1)] bg-[var(--surface-1)] px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[var(--brand-400)]"
+            >
+              <option value="">Selecione ou deixe em branco</option>
+              <option value="feminino">Menina</option>
+              <option value="masculino">Menino</option>
+              <option value="nao_revelado">Nao revelado / surpresa</option>
+            </select>
+          </label>
+          <label className="grid gap-1 text-sm">
             Peso inicial (kg)
             <Input type="number" step="0.1" {...register("initialWeight", { valueAsNumber: true })} />
             {errors.initialWeight && <span className="text-xs text-red-600">Peso inicial invalido.</span>}
           </label>
           <label className="grid gap-1 text-sm">
-            Semana atual
+            Semana atual da gestacao
             <Input type="number" {...register("currentWeek", { valueAsNumber: true })} />
             {errors.currentWeek && <span className="text-xs text-red-600">Semana deve estar entre 1 e 42.</span>}
           </label>
           <label className="grid gap-1 text-sm">
-            DPP
+            Data provavel do parto (DPP)
             <Input type="date" {...register("dueDate")} />
-            {errors.dueDate && <span className="text-xs text-red-600">Informe a DPP.</span>}
+            {errors.dueDate && <span className="text-xs text-red-600">Informe a data provavel do parto.</span>}
           </label>
           <label className="grid gap-1 text-sm">
-            DUM
+            Data da ultima menstruacao (DUM)
             <Input type="date" {...register("lmpDate")} />
-            {errors.lmpDate && <span className="text-xs text-red-600">Informe a DUM.</span>}
+            {errors.lmpDate && <span className="text-xs text-red-600">Informe a data da ultima menstruacao.</span>}
           </label>
           <Button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Salvando..." : "Concluir cadastro"}
