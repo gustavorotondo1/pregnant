@@ -46,7 +46,7 @@ export default function ProfilePage() {
       <Card>
         <h2 className="mb-2 text-base font-semibold">Dados do cadastro</h2>
         <p className="text-sm text-[var(--text-2)]">
-          Para atualizar nome, semana, DPP ou DUM, acesse o onboarding novamente.
+          Para atualizar nome, semana, data provável do parto ou data da última menstruação, acesse o cadastro novamente.
         </p>
         <Link href="/onboarding" className="mt-3 inline-block text-sm font-semibold text-[var(--brand-700)] underline-offset-4 hover:underline">
           Editar cadastro
@@ -56,7 +56,7 @@ export default function ProfilePage() {
       <Card>
         <h2 className="mb-2 text-base font-semibold text-red-700">Excluir conta</h2>
         <p className="mb-4 text-sm text-[var(--text-2)]">
-          Isso apagara permanentemente todos os seus dados: saude, consultas, diario e documentos. Essa acao nao pode ser desfeita.
+          Isso apagará permanentemente todos os seus dados: saúde, consultas, diário e documentos. Essa ação não pode ser desfeita.
         </p>
         {!confirming ? (
           <Button
@@ -67,7 +67,7 @@ export default function ProfilePage() {
           </Button>
         ) : (
           <div className="space-y-3">
-            <p className="text-sm font-semibold text-red-700">Tem certeza? Todos os dados serao perdidos.</p>
+            <p className="text-sm font-semibold text-red-700">Tem certeza? Todos os dados serão perdidos.</p>
             <div className="flex gap-3">
               <Button
                 onClick={handleDeleteAccount}

@@ -29,18 +29,18 @@ export default function ToolsPage() {
 
       <section className="grid gap-4 lg:grid-cols-2">
         <Card>
-          <h2 className="mb-3 text-base font-semibold">Calculadora gestacional (DUM)</h2>
+          <h2 className="mb-3 text-base font-semibold">Calculadora gestacional (data da última menstruação)</h2>
           <input
             type="date"
             value={lmpDate}
             onChange={(event) => setLmpDate(event.target.value)}
             className="w-full rounded-xl border border-[var(--border-1)] px-3 py-2"
           />
-          <p className="mt-3 text-sm text-[var(--text-2)]">{week ? `Voce esta na semana ${week}.` : "Selecione a DUM."}</p>
+          <p className="mt-3 text-sm text-[var(--text-2)]">{week ? `Você está na semana ${week}.` : "Selecione a data da última menstruação."}</p>
         </Card>
 
         <Card>
-          <h2 className="mb-3 text-base font-semibold">Contador de contracoes</h2>
+          <h2 className="mb-3 text-base font-semibold">Contador de contrações</h2>
           <div className="flex gap-2">
             <button onClick={startContraction} className="rounded-xl bg-[var(--brand-600)] px-4 py-2 text-sm text-white">
               Iniciar
@@ -50,7 +50,7 @@ export default function ToolsPage() {
             </button>
           </div>
           <p className="mt-3 text-sm text-[var(--text-2)]">
-            {duration ? `Duracao da ultima contracao: ${duration}s` : "Sem medicao ainda."}
+            {duration ? `Duração da última contração: ${duration}s` : "Sem medição ainda."}
           </p>
         </Card>
       </section>
@@ -58,10 +58,10 @@ export default function ToolsPage() {
       <Card>
         <h2 className="mb-2 text-base font-semibold">Checklists essenciais</h2>
         <ul className="list-disc space-y-1 pl-5 text-sm text-[var(--text-2)]">
-          <li>Enxoval do bebe</li>
+          <li>Enxoval do bebê</li>
           <li>Mala da maternidade</li>
           <li>Nomes favoritos e descartados</li>
-          <li>Itens para o pos-parto</li>
+          <li>Itens para o pós-parto</li>
         </ul>
       </Card>
     </div>

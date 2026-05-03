@@ -24,9 +24,9 @@ export default function ReportPage() {
     <div className="space-y-6">
       <header>
         <h1 className="text-2xl font-semibold" style={{ fontFamily: "var(--font-lora)" }}>
-          Relatorio para consulta
+          Relatório para consulta
         </h1>
-        <p className="text-sm text-[var(--text-2)]">Gere PDF resumido para compartilhar com seu medico.</p>
+        <p className="text-sm text-[var(--text-2)]">Gere PDF resumido para compartilhar com seu médico.</p>
       </header>
 
       <Card>
@@ -35,9 +35,9 @@ export default function ReportPage() {
 
       <Card>
         <div ref={reportRef} className="space-y-2 text-sm text-[var(--text-2)]">
-          <p><strong>Resumo de saude:</strong> pressao e glicemia estaveis.</p>
-          <p><strong>Evolucao de peso:</strong> dentro da faixa esperada.</p>
-          <p><strong>Sinais relevantes:</strong> sem alertas no periodo.</p>
+          <p><strong>Resumo de saúde:</strong> pressão e glicemia estáveis.</p>
+          <p><strong>Evolução de peso:</strong> dentro da faixa esperada.</p>
+          <p><strong>Sinais relevantes:</strong> sem alertas no período.</p>
           <p><strong>Consultas:</strong> comparecimento regular.</p>
         </div>
       </Card>

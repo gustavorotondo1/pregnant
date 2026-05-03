@@ -69,22 +69,22 @@ export default async function DashboardPage() {
       <header className="space-y-2">
         <Badge>Semana {currentWeek}</Badge>
         <h1 className="text-2xl font-semibold" style={{ fontFamily: "var(--font-lora)" }}>
-          {babyName}Dashboard da gestacao
+          {babyName}Dashboard da gestação
         </h1>
         <p className="text-sm text-[var(--text-2)]">
-          Visao geral de saude, desenvolvimento do bebe e proximos compromissos.
+          Visão geral de saúde, desenvolvimento do bebê e próximas consultas.
         </p>
       </header>
 
       <section className="grid gap-4 lg:grid-cols-3">
         <Card className="lg:col-span-2">
-          <h2 className="mb-2 text-base font-semibold text-[var(--text-1)]">Resumo semanal</h2>
+          <h2 className="mb-2 text-base font-semibold text-[var(--text-1)]">Resumo semanal 🐾</h2>
           {currentGuide ? (
             <>
               <p className="mb-3 text-sm text-[var(--text-2)]">{currentGuide.baby_development}</p>
               <div className="grid gap-2 sm:grid-cols-2">
                 <p className="text-sm"><strong>Tamanho comparativo:</strong> {currentGuide.baby_size_comparison}</p>
-                <p className="text-sm"><strong>Mudancas no corpo:</strong> {currentGuide.maternal_changes}</p>
+                <p className="text-sm"><strong>Mudanças no corpo:</strong> {currentGuide.maternal_changes}</p>
               </div>
             </>
           ) : (
@@ -92,7 +92,7 @@ export default async function DashboardPage() {
           )}
         </Card>
         <Card>
-          <h2 className="mb-2 text-base font-semibold text-[var(--text-1)]">Proxima consulta</h2>
+          <h2 className="mb-2 text-base font-semibold text-[var(--text-1)]">Próxima consulta</h2>
           {nextAppointment ? (
             <div className="space-y-1 text-sm text-[var(--text-2)]">
               <p className="font-semibold text-[var(--text-1)]">{nextAppointment.title}</p>
@@ -111,7 +111,7 @@ export default async function DashboardPage() {
 
       <section className="grid gap-4 lg:grid-cols-3">
         <Card className="lg:col-span-2">
-          <h2 className="mb-3 text-base font-semibold text-[var(--text-1)]">Evolucao do peso</h2>
+          <h2 className="mb-3 text-base font-semibold text-[var(--text-1)]">Evolução do peso</h2>
           {chartData.length > 0 ? (
             <WeightChart data={chartData} />
           ) : (

@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --surface-1: #fffaf6;
-  --surface-2: #fef2f0;
-  --surface-3: #f6f8ff;
-  --text-1: #3f2d38;
-  --text-2: #5f4d57;
-  --text-3: #8a7a83;
-  --brand-100: #f8dbe8;
-  --brand-200: #f0bfd5;
-  --brand-300: #e498bb;
-  --brand-400: #d87ea7;
-  --brand-500: #cc6f90;
-  --brand-600: #bd5d82;
-  --brand-700: #9f4769;
-  --sky-100: #dff1ff;
-  --sky-300: #9ed2ff;
-  --border-1: #e6d6dd;
+  --surface-1: #fdf8f3;
+  --surface-2: #f5ece2;
+  --surface-3: #ede3d6;
+  --text-1: #3b2a1c;
+  --text-2: #6b4c38;
+  --text-3: #9e7a64;
+  --brand-100: #ead6c0;
+  --brand-200: #d9bea0;
+  --brand-300: #c4997a;
+  --brand-400: #b07d5c;
+  --brand-500: #9a6648;
+  --brand-600: #875438;
+  --brand-700: #6e3f26;
+  --sky-100: #e8ddd4;
+  --sky-300: #c4a894;
+  --border-1: #dcc9b5;
 }
 
 @theme inline {
@@ -27,22 +27,22 @@
 }
 
 .dark {
-  --surface-1: #1f1720;
-  --surface-2: #271d29;
-  --surface-3: #17202b;
-  --text-1: #f9eef3;
-  --text-2: #e4cfd8;
-  --text-3: #b598a4;
-  --brand-100: #5a2f45;
-  --brand-200: #6e3a54;
-  --brand-300: #8f4b6d;
-  --brand-400: #b06387;
-  --brand-500: #cf7ca2;
-  --brand-600: #db90b2;
-  --brand-700: #ebb5cc;
-  --sky-100: #27394e;
-  --sky-300: #6ea2db;
-  --border-1: #483442;
+  --surface-1: #231a12;
+  --surface-2: #2d2016;
+  --surface-3: #1e1610;
+  --text-1: #f5ece2;
+  --text-2: #ddc4ae;
+  --text-3: #b8957c;
+  --brand-100: #4a2e1c;
+  --brand-200: #5d3a24;
+  --brand-300: #7a4e32;
+  --brand-400: #9a6444;
+  --brand-500: #b87d58;
+  --brand-600: #ca9272;
+  --brand-700: #e0b090;
+  --sky-100: #2a2018;
+  --sky-300: #8a6b52;
+  --border-1: #3d2a1c;
 }
 
 body {

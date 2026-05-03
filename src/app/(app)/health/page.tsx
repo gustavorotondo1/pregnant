@@ -6,10 +6,10 @@ export default function HealthPage() {
     <div className="space-y-6">
       <header>
         <h1 className="text-2xl font-semibold" style={{ fontFamily: "var(--font-lora)" }}>
-          Registros de saude
+          Registros de saúde
         </h1>
         <p className="text-sm text-[var(--text-2)]">
-          Registre diariamente peso, pressao, glicemia, altura uterina, edema e sinais importantes.
+          Registre diariamente peso, pressão, glicemia, altura uterina, edema e sinais importantes.
         </p>
       </header>
 
@@ -21,7 +21,7 @@ export default function HealthPage() {
       <Card>
         <h2 className="mb-2 text-base font-semibold">Tracker de sintomas incomuns</h2>
         <p className="text-sm text-[var(--text-2)]">
-          Area pronta para registrar sinais atipicos e compartilhar rapidamente com a equipe medica.
+          Área pronta para registrar sinais atípicos e compartilhar rapidamente com a equipe médica.
         </p>
       </Card>
     </div>

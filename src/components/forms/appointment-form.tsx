@@ -47,7 +47,7 @@ export function AppointmentForm() {
         {errors.location && <span className="text-xs text-red-600">{errors.location.message}</span>}
       </label>
       <label className="grid gap-1 text-sm text-[var(--text-2)]">
-        Perguntas para o medico
+        Perguntas para o médico
         <Textarea rows={4} {...register("questions")} />
       </label>
       <Button type="submit" disabled={isSubmitting}>

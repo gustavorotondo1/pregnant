@@ -20,9 +20,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pregnant | Acompanhamento de Gestacao",
+  title: "Pregnant | Acompanhamento de Gestação",
   description:
-    "Aplicacao web humanizada para acompanhamento completo da gestacao com foco em saude, bem-estar e organizacao.",
+    "Aplicação web humanizada para acompanhamento completo da gestação com foco em saúde, bem-estar e organização.",
 };
 
 export default function RootLayout({

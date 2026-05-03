@@ -17,12 +17,12 @@ export default function AppointmentsPage() {
         <h1 className="text-2xl font-semibold" style={{ fontFamily: "var(--font-lora)" }}>
           Consultas e lembretes
         </h1>
-        <p className="text-sm text-[var(--text-2)]">Calendario com consultas, perguntas para o medico e historico.</p>
+        <p className="text-sm text-[var(--text-2)]">Calendário com consultas, perguntas para o médico e histórico.</p>
       </header>
 
       <section className="grid gap-4 lg:grid-cols-2">
         <Card>
-          <h2 className="mb-3 text-base font-semibold">Calendario</h2>
+          <h2 className="mb-3 text-base font-semibold">Calendário</h2>
           <Calendar onChange={(date) => onChange(date as Date)} value={value} />
         </Card>
         <Card>
@@ -32,7 +32,7 @@ export default function AppointmentsPage() {
       </section>
 
       <Card>
-        <h2 className="mb-3 text-base font-semibold">Historico recente</h2>
+          <h2 className="mb-3 text-base font-semibold">Histórico recente</h2>
         <div className="space-y-2">
           {mockAppointments.map((appointment) => (
             <div key={appointment.id} className="rounded-xl border border-[var(--border-1)] p-3 text-sm">

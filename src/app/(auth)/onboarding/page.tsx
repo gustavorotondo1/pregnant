@@ -100,7 +100,7 @@ export default function OnboardingPage() {
         <h1 className="mb-1 text-2xl font-semibold" style={{ fontFamily: "var(--font-lora)" }}>
           Primeiro acesso
         </h1>
-        <p className="mb-4 text-sm text-[var(--text-2)]">Vamos personalizar seu acompanhamento de gestacao.</p>
+        <p className="mb-4 text-sm text-[var(--text-2)]">Vamos personalizar seu acompanhamento de gestação.</p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="grid gap-3">
           <label className="grid gap-1 text-sm">
@@ -109,8 +109,8 @@ export default function OnboardingPage() {
             {errors.fullName && <span className="text-xs text-red-600">{errors.fullName.message}</span>}
           </label>
           <label className="grid gap-1 text-sm">
-            Nome do bebe (opcional)
-            <Input {...register("babyName")} placeholder="Como voce quer chamar?" />
+            Nome do bebê (opcional)
+            <Input {...register("babyName")} placeholder="Como você quer chamar?" />
           </label>
           <label className="grid gap-1 text-sm">
             Sexo do bebe (opcional)
@@ -121,7 +121,7 @@ export default function OnboardingPage() {
               <option value="">Selecione ou deixe em branco</option>
               <option value="feminino">Menina</option>
               <option value="masculino">Menino</option>
-              <option value="nao_revelado">Nao revelado / surpresa</option>
+              <option value="nao_revelado">Não revelado / surpresa</option>
             </select>
           </label>
           <label className="grid gap-1 text-sm">
@@ -130,7 +130,7 @@ export default function OnboardingPage() {
             {errors.initialWeight && <span className="text-xs text-red-600">Peso inicial invalido.</span>}
           </label>
           <label className="grid gap-1 text-sm">
-            Semana atual da gestacao
+            Semana atual da gestação
             <Input type="number" {...register("currentWeek", { valueAsNumber: true })} />
             {errors.currentWeek && <span className="text-xs text-red-600">Semana deve estar entre 1 e 42.</span>}
           </label>

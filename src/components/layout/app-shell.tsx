@@ -21,7 +21,7 @@ import { createClient } from "@/lib/supabase/client";
 
 const menu = [
   { href: "/dashboard", label: "Dashboard", icon: House },
-  { href: "/health", label: "Saude", icon: HeartPulse },
+  { href: "/health", label: "Saúde", icon: HeartPulse },
   { href: "/wellness", label: "Diario", icon: NotebookPen },
   { href: "/appointments", label: "Consultas", icon: CalendarDays },
   { href: "/documents", label: "Documentos", icon: FileHeart },
@@ -50,7 +50,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <aside className="rounded-2xl border border-[var(--border-1)] bg-[var(--surface-1)] p-4 shadow-sm">
           <div className="mb-5">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--text-3)]">Pregnant</p>
-            <h1 className="text-xl font-bold text-[var(--text-1)]">Acompanhamento gentil</h1>
+            <h1 className="text-xl font-bold text-[var(--text-1)]">Acompanhamento gentil 🐻</h1>
           </div>
           <nav className="space-y-1">
             {menu.map((item) => {
