@@ -131,12 +131,12 @@ export default function ContractionsPage() {
   const startedAtMs = startRef.current;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <header className="space-y-1">
-        <h1 className="text-2xl font-semibold" style={{ fontFamily: "var(--font-lora)" }}>
+        <h1 className="text-xl sm:text-2xl font-semibold" style={{ fontFamily: "var(--font-lora)" }}>
           Contador de contrações
         </h1>
-        <p className="text-sm text-[var(--text-2)]">
+        <p className="text-xs sm:text-sm text-[var(--text-2)]">
           Registre o início e fim de cada contração para monitorar duração e intervalo.
         </p>
       </header>
@@ -148,51 +148,51 @@ export default function ContractionsPage() {
       )}
 
       {/* Cronômetros lado a lado */}
-      <section className="grid gap-4 sm:grid-cols-2">
+      <section className="grid grid-cols-2 gap-2 sm:gap-4">
         {/* Duração da contração */}
-        <Card className="flex flex-col items-center gap-3 py-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-[var(--text-3)]">
-            {active ? "Contração em andamento" : "Duração"}
+        <Card className="flex flex-col items-center gap-2 py-4 sm:py-6 px-2">
+          <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[var(--text-3)] text-center">
+            {active ? "Em andamento" : "Duração"}
           </p>
           <div
-            className={`flex h-40 w-40 flex-col items-center justify-center rounded-full border-4 transition-all ${
+            className={`flex h-28 w-28 sm:h-40 sm:w-40 flex-col items-center justify-center rounded-full border-4 transition-all ${
               active
                 ? "border-[var(--brand-500)] bg-[var(--brand-100)] shadow-lg shadow-[var(--brand-200)]"
                 : "border-[var(--border-1)] bg-[var(--surface-2)]"
             }`}
           >
             <span
-              className={`font-mono text-3xl font-bold tabular-nums tracking-tight ${
+              className={`font-mono text-xl sm:text-3xl font-bold tabular-nums tracking-tight ${
                 active ? "text-[var(--brand-700)]" : "text-[var(--text-3)]"
               }`}
             >
               {formatMs(active ? elapsedMs : (history[0]?.duration ?? 0))}
             </span>
             {!active && history.length > 0 && (
-              <span className="mt-1 text-xs text-[var(--text-3)]">última</span>
+              <span className="mt-1 text-[10px] sm:text-xs text-[var(--text-3)]">última</span>
             )}
           </div>
           {active && startedAtMs !== null && (
-            <p className="text-xs text-[var(--text-2)]">
-              Iniciada às {formatHHMM(startedAtMs)}
+            <p className="text-[10px] sm:text-xs text-[var(--text-2)] text-center">
+              Às {formatHHMM(startedAtMs)}
             </p>
           )}
         </Card>
 
         {/* Intervalo entre contrações */}
-        <Card className="flex flex-col items-center gap-3 py-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-[var(--text-3)]">
-            {!active && lastEndRef.current ? "Intervalo (desde fim)" : "Intervalo"}
+        <Card className="flex flex-col items-center gap-2 py-4 sm:py-6 px-2">
+          <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[var(--text-3)] text-center">
+            {!active && lastEndRef.current ? "Desde o fim" : "Intervalo"}
           </p>
           <div
-            className={`flex h-40 w-40 flex-col items-center justify-center rounded-full border-4 transition-all ${
+            className={`flex h-28 w-28 sm:h-40 sm:w-40 flex-col items-center justify-center rounded-full border-4 transition-all ${
               !active && lastEndRef.current
                 ? "border-amber-400 bg-amber-50 shadow-lg shadow-amber-100"
                 : "border-[var(--border-1)] bg-[var(--surface-2)]"
             }`}
           >
             <span
-              className={`font-mono text-3xl font-bold tabular-nums tracking-tight ${
+              className={`font-mono text-xl sm:text-3xl font-bold tabular-nums tracking-tight ${
                 !active && lastEndRef.current ? "text-amber-700" : "text-[var(--text-3)]"
               }`}
             >
@@ -203,30 +203,30 @@ export default function ContractionsPage() {
                 : "—"}
             </span>
             {!active && lastEndRef.current !== null && (
-              <span className="mt-1 text-xs text-amber-600">em andamento</span>
+              <span className="mt-1 text-[10px] sm:text-xs text-amber-600">em andamento</span>
             )}
             {(!active || lastEndRef.current === null) && history[0]?.interval != null && (
-              <span className="mt-1 text-xs text-[var(--text-3)]">último</span>
+              <span className="mt-1 text-[10px] sm:text-xs text-[var(--text-3)]">último</span>
             )}
           </div>
           {history.length > 0 && history[0].interval !== null && (
-            <p className="text-xs text-[var(--text-2)]">
-              Intervalo anterior: {formatDuration(history[0].interval)}
+            <p className="text-[10px] sm:text-xs text-[var(--text-2)] text-center">
+              Anterior: {formatDuration(history[0].interval)}
             </p>
           )}
         </Card>
       </section>
 
       {/* Botões */}
-      <div className="flex justify-center gap-3">
+      <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-3">
         {!active ? (
-          <Button onClick={start} className="px-10 py-3 text-base">
+          <Button onClick={start} className="w-full sm:w-auto px-10 py-4 sm:py-3 text-base">
             ▶ Iniciar contração
           </Button>
         ) : (
           <Button
             onClick={stop}
-            className="bg-[var(--brand-600)] px-10 py-3 text-base text-white hover:bg-[var(--brand-700)]"
+            className="w-full sm:w-auto bg-[var(--brand-600)] px-10 py-4 sm:py-3 text-base text-white hover:bg-[var(--brand-700)]"
           >
             ■ Fim da contração
           </Button>
@@ -234,7 +234,7 @@ export default function ContractionsPage() {
         {history.length > 0 && !active && (
           <Button
             onClick={reset}
-            className="border border-[var(--border-1)] bg-transparent px-6 text-[var(--text-2)] hover:bg-[var(--surface-2)]"
+            className="w-full sm:w-auto border border-[var(--border-1)] bg-transparent px-6 text-[var(--text-2)] hover:bg-[var(--surface-2)]"
           >
             Reiniciar
           </Button>
@@ -243,20 +243,20 @@ export default function ContractionsPage() {
 
       {/* Estatísticas */}
       {history.length >= 2 && (
-        <section className="grid gap-4 sm:grid-cols-3">
-          <Card className="text-center">
-            <p className="text-xs text-[var(--text-3)] uppercase tracking-wide">Total</p>
-            <p className="mt-1 text-2xl font-bold text-[var(--brand-700)]">{history.length}</p>
+        <section className="grid grid-cols-3 gap-2 sm:gap-4">
+          <Card className="text-center px-1 py-3 sm:p-4">
+            <p className="text-[10px] sm:text-xs text-[var(--text-3)] uppercase tracking-wide">Total</p>
+            <p className="mt-1 text-xl sm:text-2xl font-bold text-[var(--brand-700)]">{history.length}</p>
           </Card>
-          <Card className="text-center">
-            <p className="text-xs text-[var(--text-3)] uppercase tracking-wide">Duração média</p>
-            <p className="mt-1 text-2xl font-bold text-[var(--brand-700)]">
+          <Card className="text-center px-1 py-3 sm:p-4">
+            <p className="text-[10px] sm:text-xs text-[var(--text-3)] uppercase tracking-wide">Duração</p>
+            <p className="mt-1 text-base sm:text-2xl font-bold text-[var(--brand-700)]">
               {avgDurationMs !== null ? formatDuration(avgDurationMs) : "—"}
             </p>
           </Card>
-          <Card className="text-center">
-            <p className="text-xs text-[var(--text-3)] uppercase tracking-wide">Intervalo médio</p>
-            <p className="mt-1 text-2xl font-bold text-[var(--brand-700)]">
+          <Card className="text-center px-1 py-3 sm:p-4">
+            <p className="text-[10px] sm:text-xs text-[var(--text-3)] uppercase tracking-wide">Intervalo</p>
+            <p className="mt-1 text-base sm:text-2xl font-bold text-[var(--brand-700)]">
               {avgIntervalMs !== null ? formatDuration(avgIntervalMs) : "—"}
             </p>
           </Card>
@@ -271,13 +271,13 @@ export default function ContractionsPage() {
             {history.map((c, i) => (
               <div
                 key={c.id}
-                className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[var(--border-1)] px-3 py-2 text-sm"
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 rounded-xl border border-[var(--border-1)] px-3 py-2 text-sm"
               >
                 <div className="flex items-center gap-2">
                   <Badge>{i === 0 ? "Última" : `#${history.length - i}`}</Badge>
-                  <span className="text-[var(--text-2)]">{formatHHMM(c.startedAt)}</span>
+                  <span className="text-[var(--text-2)] text-xs sm:text-sm">{formatHHMM(c.startedAt)}</span>
                 </div>
-                <div className="flex gap-4 text-right text-[var(--text-2)]">
+                <div className="flex gap-3 sm:gap-4 text-xs sm:text-sm text-[var(--text-2)]">
                   <span>
                     <strong>Duração:</strong> {formatDuration(c.duration)}
                   </span>
