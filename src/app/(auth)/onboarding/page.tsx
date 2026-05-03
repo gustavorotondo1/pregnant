@@ -81,7 +81,7 @@ export default function OnboardingPage() {
     );
 
     if (error) {
-      toast.error(`Erro: ${error.message}`);
+      toast.error("Nao foi possivel salvar seu perfil.");
       return;
     }
 
