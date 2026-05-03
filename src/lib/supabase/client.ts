@@ -8,5 +8,9 @@ export function createClient() {
     return null;
   }
 
-  return createBrowserClient(url, anonKey);
+  return createBrowserClient(url, anonKey, {
+    auth: {
+      flowType: "pkce",
+    },
+  });
 }
